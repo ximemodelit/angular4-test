@@ -3,10 +3,6 @@ import {
   OnInit
 } from '@angular/core';
 
-import { AppState } from '../app.service';
-import { Title } from './title';
-import { XLargeDirective } from './x-large';
-import { SalesforceService } from "../services/salesforce.service";
 
 @Component({
   /**
@@ -18,10 +14,7 @@ import { SalesforceService } from "../services/salesforce.service";
   /**
    * We need to tell Angular's Dependency Injection which providers are in our app.
    */
-  providers: [
-    Title,
-    SalesforceService
-  ],
+  providers: [],
   /**
    * Our list of styles in our component. We may add more to compose many styles together.
    */
@@ -32,42 +25,29 @@ import { SalesforceService } from "../services/salesforce.service";
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
-  /**
-   * Set our default values
-   */
-  public localState = { value: '' };
+ 
+  public title: String;
+  public text: String;
   /**
    * TypeScript public modifiers
    */
   constructor(
-    public appState: AppState,
-    public title: Title,
-    private salesforceService: SalesforceService
+	
   ) {}
 
   public ngOnInit() {
-    console.log('hello `Home` component');
-    /**
-     * this.title.getData().subscribe(data => this.data = data);
-     */
+	console.log('hello `Home` component');
+	this.title = "Home";
+	this.text = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scaevolam M. Nunc agendum est subtilius.
+				 Hanc quoque iucunditatem, si vis, transfer in animum; Tria genera bonorum; Quod totum contra est.
+				 Peccata paria. An potest cupiditas finiri? Quid ad utilitatem tantae pecuniae? Certe non potest. 
+				 Cui Tubuli nomen odio non est? Frater et T. Quid ad utilitatem tantae pecuniae? 
+				 Videsne quam sit magna dissensio? Hoc tu nunc in illo probas. Quare conare, quaeso. 
+				 Ea possunt paria non esse. Si quidem, inquit, tollerem, sed relinquo. Quod vestri non item. 
+				 Duo Reges: constructio interrete. Praeteritis, inquit, gaudeo. 
+				 Quamquam id quidem licebit iis existimare, qui legerint. 
+				 An tu me de L. Nam quid possumus facere melius?`
   }
 
-  public submitState(value: string) {
-    console.log('submitState', value);
-    this.appState.set('value', value);
-    this.localState.value = '';
-  }
-
-    public executeVF() {
-        let controller = 'TestAngular4Controller';
-        let method = 'testAngular4';
-        let params = new Array();
-
-        this.salesforceService.execute(controller, method, params)
-        .then((res) => {
-            console.log('Result: ', res);    
-        }, (reason) => {
-            console.log('Reason: ' + reason);
-        })
-    }
+  
 }

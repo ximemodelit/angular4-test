@@ -1,0 +1,24 @@
+<div>
+    <h1>Contacts</h1>
+    <!-- Contacts' List -->
+    <div>
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let contact of contacts">
+                    <td>{{contact.name}}</td>
+                    <td>{{contact.lastName}}</td>
+                    <td>{{contact.email}}</td>                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add Contact -->
+    <div>
+    </div>
+</div>
